@@ -1,0 +1,169 @@
+WEB SOCKETS TRANSPORTS ITS DATA OVER UDP AS ITS FAST 
+
+
+WEB SOCKETS
+
+
+WebSockets are a technology that enables two-way communication between a web browser (or any other client). Unlike traditional HTTP requests, which are one-way (you ask for a web page, and the server sends it back), WebSockets allow real-time, interactive communication between the client and server.
+
+
+
+EXAMPLE---
+Imagine you're chatting with a friend on a messaging app like WhatsApp or Facebook Messenger. When you send a message, you want it to appear on your friend's screen almost instantly, and when your friend replies, you want to see it immediately. This is where WebSockets come into play:
+
+
+
+
+
+WITHOUT WEBSOCKETS 
+your app would need to repeatedly send requests to the server asking if there are new messages. The server would have to process these requests, check for new messages, and respond. This process is called polling. It's like you texting your friend every few seconds, "Got any new messages?" If there are none, your friend responds with "No." This happens again and again
+
+
+
+
+WITH WEB SOCKETSS
+ With WebSockets, it's like having an open phone line to your friend. You can send and receive messages instantly without repeatedly asking if there are new ones. When your friend sends a message, 
+
+
+
+
+
+
+
+
+
+PROPER WEB RTC( its a peer to peer protocol )---
+
+
+
+
+1. when the video or the chat goes from 1 browser to another directly without going thru the server 
+2. here we need to know, who to send the video or text 
+3. Q arises is ki how do we know the url and port of the other person's browser
+   soln--> STUN ---> its a server on the internet and its job is and when we send it a request and it sends back the IP and the port thru which the request it got to there
+
+
+ie like we r using an external service to provide our url and port
+
+
+#IMAGINE 
+theres this STUN server and B1 AND B2 send request to it and get there urls and port 
+now both the browser would exchange there URLS AND PORT using the WEB SOCKET SERVER
+then we would be able to send the VIDEO or CHAT directly from browser to browser cuz now they both know  where to send exactly 
+
+
+
+
+
+
+
+ICE CANDIDATE TEST --- its a fancy way of saying that its a combination of IP, port and protocol
+
+
+
+RTC PeerConnection-- its an global object on the browser , this is what helps us create an connection to another browser 
+
+CRUX/CORE of creating an webrtc server 
+
+
+
+
+LOCAL DESCRIPTION and REMOTE DESCRIPTION----
+
+B1                AND             B2
+LD- port, ip etc  ====          RD here in b2 
+
+sly
+RD of b1 will have the LD of b2 
+
+
+
+*************************************************
+IMP QUESTION!!!
+If webRTC is so fast why do we even need websockets ?
+soln-- 
+
+sockets use UDP and they are not reliable for transfering important data
+webRTC depends upon sockets to make the initial connection and then takes over   
+
+
+
+
+
+
+
+*************************************************
+So what is exactly sent between the two clients and how is it done
+soln---
+
+* first thing is that the browser needs to have other browsers url and port and it gets it via STUN server ie ki both the browsers send requests to this STUN and get back their urls and port and then use SOCKET SERVER TO send stuff from 1 browser to another 
+
+
+* Then there is this RTC peerconnection its a global object on browser which helps us create connection to another brower 
+
+
+* Basically all the stuff happens because of this thing called signalling 
+
+* Now the data transmitted is in 2 parts 
+ --- SDP> this will contain all that audio, video and media type etc 
+ --- ICE candidates its just a combination of port, protocol and IP(we use STUN for these)
+
+SDP--->session description protocol 	
+
+
+
+*************************************************
+BTS OF ABOVE PROCESS 
+
+1. p1 and p2 and 2 peers trying to establish aconnection 
+2. so p1 first sends SDP to p2 via SOCKET SERVER via a process called signalling
+3. now sly p2 will also do the same  
+4. the moment both SDP are exchanged peers are connected but data cannot be transferred between them 
+5. thus now we use ICE and its done by sending request to the STUN and will send info to the p2 ie the port, url ip etc 
+6. sly does the p2 with the STUN server
+7. we can send the SDP along with the ice candidates 
+
+
+
+
+************************************************************
+questions to ask from chat gpt 
+
+
+
+1. peerConnection.ontrack = (event) => {
+        event.streams[0].getTracks().forEach((track)=>{
+            remoteStream.addTrack()
+        })
+    }
+
+
+    peerConnection.onicecandidate = async (event) => {
+        if(event.candidate){
+            console.log('New ICE candidate:', event.candidate)
+        }
+    }
+    // so 
+
+
+
+
+2. how to get agora rtm integrated on y project using npm package manager as the direct download option is not avaialble 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

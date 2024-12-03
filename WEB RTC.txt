@@ -1,0 +1,73 @@
+WEB RTC
+
+WebRTC, which stands for "Web Real-Time Communication," is a technology that allows web browsers to communicate with each other in real-time, including audio and video communication, 
+
+
+
+
+
+WEB SOCKETS
+
+
+WebSockets are a technology that enables two-way communication between a web browser (or any other client). Unlike traditional HTTP requests, which are one-way (you ask for a web page, and the server sends it back), WebSockets allow real-time, interactive communication between the client and server.
+
+
+
+EXAMPLE---
+Imagine you're chatting with a friend on a messaging app like WhatsApp or Facebook Messenger. When you send a message, you want it to appear on your friend's screen almost instantly, and when your friend replies, you want to see it immediately. This is where WebSockets come into play:
+
+
+
+
+
+WITHOUT WEBSOCKETS 
+your app would need to repeatedly send requests to the server asking if there are new messages. The server would have to process these requests, check for new messages, and respond. This process is called polling. It's like you texting your friend every few seconds, "Got any new messages?" If there are none, your friend responds with "No." This happens again and again
+
+
+
+
+WITH WEB SOCKETSS
+ With WebSockets, it's like having an open phone line to your friend. You can send and receive messages instantly without repeatedly asking if there are new ones. When your friend sends a message, 
+
+
+
+
+
+
+web sockets is also a protocol..
+
+CHECK GMEET FOLDER TO SEE HOW WE CODE A WEBSOCET SERVER
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

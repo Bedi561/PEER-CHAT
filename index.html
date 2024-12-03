@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>PeerChat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" media='screen' href="main.css">
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/react-icons@4.2.0/lib/esm/index.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div id="videos">
+            <video class="video-player" id="user-1" autoplay playsinline></video>
+            <video class="video-player" id="user-2" autoplay playsinline></video>
+        </div>
+
+        <div id="controls">
+            <div class="control-button" id="camera">
+                <i class="ri-camera-line"></i>
+            </div>
+
+            <div class="control-button" id="mute">
+                <i class="ri-mic-line"></i>
+            </div>
+            
+            <a href="lobby.html">
+                <div class="control-button" id="leave">
+                    <i class="ri-phone-off-line"></i>
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    <script src="agora-rtm-sdk-1.4.4.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
